@@ -24,6 +24,7 @@ function SignUp({ setLoggedIn }) {
     <div className="signup">
       <h2>Sign Up</h2>
       <form onSubmit={handleSubmit}>
+        <p class="text">Name</p>
         <input
           type="text"
           value={name}
@@ -31,6 +32,7 @@ function SignUp({ setLoggedIn }) {
           placeholder="Name"
           required
         />
+        <p class="text">Email</p>
         <input
           type="email"
           value={email}
@@ -38,6 +40,7 @@ function SignUp({ setLoggedIn }) {
           placeholder="Email"
           required
         />
+        <p class="text">Password</p>
         <input
           type="password"
           value={password}
@@ -45,6 +48,7 @@ function SignUp({ setLoggedIn }) {
           placeholder="Password"
           required
         />
+        <br></br>
         <button type="submit">Sign Up</button>
       </form>
       {error && <p className="error">{error}</p>}
