@@ -1,0 +1,32 @@
+/* MessageBoard.css */
+.message-board {
+    margin: 30px;
+  }
+  
+  .message-board h1 {
+    font-size: 2em;
+  }
+  
+  .message-board form {
+    margin-bottom: 20px;
+  }
+  
+  .message-board input {
+    padding: 10px;
+    margin-right: 10px;
+  }
+  
+  .message-board button {
+    padding: 10px;
+  }
+  
+  .message-board ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .message-board li {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+  

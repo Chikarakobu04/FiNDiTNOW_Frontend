@@ -1,0 +1,32 @@
+/* Login.css */
+.login {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .login h2 {
+    text-align: center;
+  }
+  
+  .login form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .login input {
+    padding: 10px;
+    margin: 10px 0;
+  }
+  
+  .login button {
+    padding: 10px;
+  }
+  
+  .error {
+    color: red;
+    text-align: center;
+  }
+  
