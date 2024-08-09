@@ -1,0 +1,42 @@
+/* TitleScreen.css */
+.title-screen {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0; /* 背景色 */
+    color: #333; /* テキストカラー */
+    text-align: center;
+  }
+  
+  .title-screen .logo {
+    width: 150px;  /* ロゴの幅 */
+    height: auto;  /* アスペクト比を維持 */
+    margin-bottom: 20px;  /* ロゴとタイトルの間のスペース */
+  }
+  
+  .title-screen h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+  }
+  
+  .buttons {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .buttons button {
+    padding: 15px 30px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #007bff; /* ボタン背景色 */
+    color: white;
+  }
+  
+  .buttons button:hover {
+    background-color: #0056b3; /* ホバー時の色 */
+  }
+  
