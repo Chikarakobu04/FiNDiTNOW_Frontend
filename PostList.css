@@ -1,0 +1,33 @@
+/* PostList.css */
+.post-list {
+    margin: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+  }
+  
+  .post-list h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+  
+  .post-list ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .post-list li {
+    padding: 15px;
+    margin-bottom: 15px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .uploaded-image {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+    border-radius: 4px;
+  }
+  
