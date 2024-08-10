@@ -1,47 +1,60 @@
 /* MessageBoard.css */
-.message-board {
-  margin: 20px;
+.making-post {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
 }
 
-.message-board h1 {
+.making-post p{
+  text-align: left;
+  line-height: 0.3;
+}
+
+.making-post h1 {
   font-size: 2em;
   margin-bottom: 20px;
 }
 
-.message-board form {
+.making-post form {
+  display: flex;
+  flex-direction: column;
   margin-bottom: 20px;
 }
 
-.message-board input[type="text"] {
+.making-post input[type="text"] {
   padding: 10px;
   margin-right: 10px;
   border-radius: 4px;
   border: 1px solid #ccc;
 }
 
-.message-board input[type="file"] {
+.making-post input[type="file"] {
   margin-right: 10px;
 }
 
-.message-board button {
+.making-post button {
   padding: 10px;
   border-radius: 4px;
   border: none;
-  background-color: #28a745;
+  background-color: #699bd9;
   color: white;
   cursor: pointer;
 }
 
-.message-board button:hover {
-  background-color: #218838;
+.making-post button:hover {
+  padding: 10px;
+  background-color: #395ba0;
 }
 
-.message-board ul {
+.making-post ul {
   list-style-type: none;
   padding: 0;
 }
 
-.message-board li {
+.making-post li {
   padding: 15px;
   margin-bottom: 15px;
   background-color: #fff;
@@ -54,4 +67,8 @@
   height: auto;
   margin-bottom: 10px;
   border-radius: 4px;
+}
+
+.posted p{
+  text-align: center;
 }
