@@ -11,7 +11,7 @@ function PostList({ messages }) {
 
   return (
     <div className="post-list">
-      
+      <h1>投稿一覧</h1>
       <div className="search-bar">
         <input
           type="text"
@@ -25,7 +25,8 @@ function PostList({ messages }) {
           <li key={index} className="post-item">
             <div className="post-content">
               <div className="message-text">
-                <p>{message.text}</p>
+                <p><strong>拾った場所:</strong> {message.place}</p>
+                <p><strong>拾ったモノ:</strong> {message.text}</p>
               </div>
               {message.image && (
                 <div className="image-container">

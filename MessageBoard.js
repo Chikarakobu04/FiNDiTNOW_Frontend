@@ -11,10 +11,12 @@ function MessageBoard({ messages, addMessage }) {
     event.preventDefault();
     if (lostitem.trim() !== '' || image) {
       const messageObject = {
+        place: place,
         text: lostitem,
         image: URL.createObjectURL(image) // 画像を表示するためにBlob URLを作成
       };
       addMessage(messageObject);
+      setPlace('');
       setLostitem('');
       setImage(null); // 送信後に画像フィールドをリセット
     }
@@ -59,7 +61,8 @@ function MessageBoard({ messages, addMessage }) {
             {message.image && (
               <img src={message.image} alt="投稿された画像" className="uploaded-image" />
             )}
-            <p>{message.text}</p>
+            <p><strong>場所:</strong> {message.place}</p>
+            <p><strong>モノ:</strong> {message.text}</p>
           </li>
         ))}
       </ul>
