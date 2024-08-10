@@ -2,18 +2,20 @@ import React, { useState } from 'react';
 import './MessageBoard.css';
 
 function MessageBoard({ messages, addMessage }) {
-  const [newMessage, setNewMessage] = useState('');
+  const [place, setPlace] = useState('');
+  const [lostitem, setLostitem] = useState('');
+  //const [newMessage,setNewMessage] = useState('');
   const [image, setImage] = useState(null); // 画像の状態を管理するステート
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (newMessage.trim() !== '' || image) {
+    if (lostitem.trim() !== '' || image) {
       const messageObject = {
-        text: newMessage,
+        text: lostitem,
         image: URL.createObjectURL(image) // 画像を表示するためにBlob URLを作成
       };
       addMessage(messageObject);
-      setNewMessage('');
+      setLostitem('');
       setImage(null); // 送信後に画像フィールドをリセット
     }
   };
@@ -24,17 +26,33 @@ function MessageBoard({ messages, addMessage }) {
 
   return (
     <div className="message-board">
-      <h1>掲示板</h1>
+      <div className='making-post'>
+      <h2>落とし物投稿の作成</h2>
       <form onSubmit={handleSubmit}>
+        <p class="text">拾った場所</p>
         <input
           type="text"
-          value={newMessage}
-          onChange={(e) => setNewMessage(e.target.value)}
-          placeholder="メッセージを入力"
+          value={place}
+          onChange={(e) => setPlace(e.target.value)}
+          placeholder="場所を入力"
         />
+        <p class="text">拾ったモノ</p>
+        <input
+          type="text"
+          value={lostitem}
+          onChange={(e) => setLostitem(e.target.value)}
+          placeholder="例）ハンカチ、イヤホン、家の鍵..."
+        />
+
+      <br></br>
+        <p class="text">画像を投稿</p>
         <input type="file" onChange={handleImageChange} accept="image/*" />
-        <button type="submit">送信</button>
+        <br></br>
+        <br></br>
+        <button type="submit">投稿</button>
       </form>
+      
+      <div className='posted'>
       <ul>
         {messages.map((message, index) => (
           <li key={index}>
@@ -45,6 +63,8 @@ function MessageBoard({ messages, addMessage }) {
           </li>
         ))}
       </ul>
+      </div>
+      </div>
     </div>
   );
 }
