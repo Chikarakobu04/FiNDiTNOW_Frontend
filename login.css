@@ -1,32 +1,73 @@
-/* Login.css */
 .login {
-    max-width: 500px;
-    margin: 50px auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .login h2 {
-    text-align: center;
-  }
-  
-  .login form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .login input {
-    padding: 10px;
-    margin: 10px 0;
-  }
-  
-  .login button {
-    padding: 10px;
-  }
-  
-  .error {
-    color: red;
-    text-align: center;
-  }
-  
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.login h2 {
+  text-align: center;
+}
+
+.login form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login label {
+  font-weight: bold;
+  margin-bottom: 5px;
+  text-align: left; 
+}
+
+.login input {
+  padding: 10px;
+  margin: 10px 0;
+  width: 95%; 
+}
+
+.login button {
+  padding: 10px;
+  background-color: #1b6679; 
+  color: black; 
+  border: none; 
+  border-radius: 5px; /* ボタンの角を丸める /
+  cursor: pointer; 
+  font-size: 16px; / フォントサイズ /
+}
+
+.login button:hover {
+  background-color: #0056b3; / ホバー時の暗い青色 /
+}
+
+.forgot-password {
+  margin-top: 10px;
+  text-align: left;
+}
+
+.forgot-password a {
+  color: hsl(0, 0%, 0%); / 通常時のリンクの色 /
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.forgot-password a:hover {
+  color: #1b6679; / カーソルを合わせたときのリンクの色 /
+  text-decoration: underline;
+}
+
+.forgot-password a::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: #ccc; / 通常時の線の色 */
+  margin-top: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.error {
+  color: red;
+  text-align: center;
+}

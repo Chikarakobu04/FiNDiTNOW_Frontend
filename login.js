@@ -20,23 +20,32 @@ function Login({ setLoggedIn }) {
     <div className="login">
       <h2>Login</h2>
       <form onSubmit={handleSubmit}>
+        <label htmlFor="email">Email</label>
         <input
           type="email"
+          id="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          placeholder="Email"
+          placeholder="Value"
           required
         />
+        <label htmlFor="password">Password</label>
         <input
           type="password"
+          id="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
+          placeholder="Value"
           required
         />
         <button type="submit">Login</button>
       </form>
       {error && <p className="error">{error}</p>}
+
+      {/* Forgot password link */}
+      <div className="forgot-password">
+        <a href="#forgot-password">Forgot password?</a>
+      </div>
     </div>
   );
 }
