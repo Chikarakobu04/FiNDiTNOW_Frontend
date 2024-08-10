@@ -1,33 +1,66 @@
 /* PostList.css */
 .post-list {
-    margin: 20px;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-radius: 5px;
-  }
-  
-  .post-list h1 {
-    font-size: 2em;
-    margin-bottom: 20px;
-  }
-  
-  .post-list ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .post-list li {
-    padding: 15px;
-    margin-bottom: 15px;
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-  }
-  
-  .uploaded-image {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 10px;
-    border-radius: 4px;
-  }
-  
+  margin: 20px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+}
+
+.post-list h1 {
+  font-size: 2em;
+  margin-bottom: 20px;
+}
+
+.search-bar {
+  margin-bottom: 20px;
+}
+
+.search-bar input {
+  padding: 10px;
+  font-size: 1em;
+  width: 300px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.post-list ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.post-item {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.post-content {
+  width: 500px; /* 投稿の幅をTwitterの投稿サイズに合わせる */
+  background-color: #41cdec;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.message-text {
+  padding: 10px 15px;
+  background-color: #41cdec;
+  color: #333;
+  font-size: 1.2em;
+  font-weight: bold;
+  text-align: left;
+  border-bottom: 1px solid #41cdec;
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #41cdec;
+}
+
+.uploaded-image {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
