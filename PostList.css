@@ -36,7 +36,7 @@
 
 .post-content {
   width: 500px; /* 投稿の幅をTwitterの投稿サイズに合わせる */
-  background-color: #41cdec;
+  background-color: #ffffff;
   border-radius: 10px;
   overflow: hidden;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -44,19 +44,19 @@
 
 .message-text {
   padding: 10px 15px;
-  background-color: #41cdec;
+  background-color: #ffffff;
   color: #333;
   font-size: 1.2em;
   font-weight: bold;
   text-align: left;
-  border-bottom: 1px solid #41cdec;
+  border-bottom: 1px solid #ddd;
 }
 
 .image-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #41cdec;
+  background-color: #f0f0f0;
 }
 
 .uploaded-image {

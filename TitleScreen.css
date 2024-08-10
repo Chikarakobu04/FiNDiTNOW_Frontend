@@ -5,13 +5,13 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #f0f0f0; /* 背景色 */
+  background-color: #00b7ff; /* 背景色 */
   color: #333; /* テキストカラー */
   text-align: center;
 }
 
 .title-screen .logo {
-  width: 150px;  /* ロゴの幅 */
+  width: 450px;  /* ロゴの幅を3倍に設定 (150px の3倍) */
   height: auto;  /* アスペクト比を維持 */
   margin-bottom: 20px;  /* ロゴとタイトルの間のスペース */
 }
