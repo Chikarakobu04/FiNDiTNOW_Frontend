@@ -12,6 +12,29 @@ function SignUp({ setLoggedIn }) {
 
     // 簡易的なユーザー作成ロジック
     if (name && email && password) {
+
+      let data = {
+        "user_name":name,
+        "user_email":email,
+        "user_password":password
+      }
+  
+      fetch('http://127.0.0.1:5000/users',{
+        method: 'post',
+        headers: {
+          'Content-Type': 'application/json', // JSON形式のデータのヘッダー
+          'Access-Control-Allow-Origin':'*'
+        },
+        body: JSON.stringify(data)
+  
+      })
+      .then(response => {
+        return response.json()
+      })
+      .then(data => {
+        console.log(data);
+      })
+
       // 仮にアカウント作成成功とする
       console.log('Account created:', { name, email, password });
       setLoggedIn(true);
