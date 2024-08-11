@@ -7,16 +7,44 @@ function SignUp({ setLoggedIn }) {
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
-    // 簡易的なユーザー作成ロジック
-    if (name && email && password) {
-      // 仮にアカウント作成成功とする
-      console.log('Account created:', { name, email, password });
-      setLoggedIn(true);
-    } else {
-      setError('All fields are required');
+    // すべてのフィールドが入力されているかチェック
+    if (!name || !email || !password) {
+      setError('すべてのフィールドを入力してください');
+      return;
+    }
+
+    // ユーザーデータをバックエンドに送信するための準備
+    const userData = {
+      name,
+      email,
+      password
+    };
+
+    try {
+      // バックエンドAPIにデータを送信
+      const response = await fetch('http://localhost:5000/api/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(userData),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        // 認証が成功した場合
+        setLoggedIn(true); // ログイン状態にする
+      } else {
+        // 認証が失敗した場合、エラーメッセージを表示
+        setError(data.message || 'サインアップに失敗しました');
+      }
+    } catch (error) {
+      // サーバーエラーが発生した場合
+      setError('サーバーに接続できませんでした');
     }
   };
 
@@ -24,7 +52,7 @@ function SignUp({ setLoggedIn }) {
     <div className="signup">
       <h2>Sign Up</h2>
       <form onSubmit={handleSubmit}>
-        <p class="text">Name</p>
+        <p className="text">Name</p>
         <input
           type="text"
           value={name}
@@ -32,7 +60,7 @@ function SignUp({ setLoggedIn }) {
           placeholder="Name"
           required
         />
-        <p class="text">Email</p>
+        <p className="text">Email</p>
         <input
           type="email"
           value={email}
@@ -40,7 +68,7 @@ function SignUp({ setLoggedIn }) {
           placeholder="Email"
           required
         />
-        <p class="text">Password</p>
+        <p className="text">Password</p>
         <input
           type="password"
           value={password}
@@ -48,7 +76,7 @@ function SignUp({ setLoggedIn }) {
           placeholder="Password"
           required
         />
-        <br></br>
+        <br />
         <button type="submit">Sign Up</button>
       </form>
       {error && <p className="error">{error}</p>}
