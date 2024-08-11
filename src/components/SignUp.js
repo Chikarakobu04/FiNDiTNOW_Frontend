@@ -23,7 +23,6 @@ function SignUp({ setLoggedIn }) {
         method: 'post',
         headers: {
           'Content-Type': 'application/json', // JSON形式のデータのヘッダー
-          'Access-Control-Allow-Origin':'*'
         },
         body: JSON.stringify(data)
   
