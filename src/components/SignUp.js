@@ -22,30 +22,25 @@ function SignUp({ setLoggedIn }) {
       email,
       password
     };
+  
+    fetch('http://127.0.0.1:5000/users',{
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json', // JSON形式のデータのヘッダー
+      },
+      body: JSON.stringify(data)
 
-    try {
-      // バックエンドAPIにデータを送信
-      const response = await fetch('http://localhost:5000/api/signup', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(userData),
-      });
-
-      const data = await response.json();
-
-      if (response.ok) {
-        // 認証が成功した場合
-        setLoggedIn(true); // ログイン状態にする
-      } else {
-        // 認証が失敗した場合、エラーメッセージを表示
-        setError(data.message || 'サインアップに失敗しました');
+    })
+    .then(response => {
+      if (!response.ok) {
+        console.error('サーバーエラー');
       }
-    } catch (error) {
-      // サーバーエラーが発生した場合
-      setError('サーバーに接続できませんでした');
-    }
+      // ここに成功時の処理を記述
+      return response.json()
+    })
+    .catch(error => {
+      console.error('通信に失敗しました', error);
+    });
   };
 
   return (

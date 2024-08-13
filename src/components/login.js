@@ -8,8 +8,27 @@ function Login({ setLoggedIn }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    // const params = {q : "嫌われる勇気"};
+    // const query = new URLSearchParams(params);
+
+    // fetch('http://127.0.0.1:5000/users/'{
+    //   method: 'get',
+    //   headers: {
+    //     'Content-Type': 'application/json' // JSON形式のデータのヘッダー
+    //   },
+    //   body: JSON.stringify(data)
+
+    // })
+    // .then(response => {
+    //   return response.json()
+    // })
+    // .then(data => {
+    //   console.log(data);
+    // })
+
     // フロントエンドでの簡易的な認証
-    if (email === 'user1@example.com' && password === 'password1') {
+    if (email === 'a@example.com' && password === '123') {
       setLoggedIn(true);
     } else {
       setError('Invalid email or password');
