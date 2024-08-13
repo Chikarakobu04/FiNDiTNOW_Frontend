@@ -6,7 +6,6 @@ function MessageBoard({ messages, addMessage }) {
   const [lostitem, setLostitem] = useState('');
   //const [newMessage,setNewMessage] = useState('');
   const [image, setImage] = useState(null); // 画像の状態を管理するステート
-  const [imgId, setImgId] = useState('');
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -21,106 +20,10 @@ function MessageBoard({ messages, addMessage }) {
       setLostitem('');
       setImage(null); // 送信後に画像フィールドをリセット
     }
-
-    let data = {
-      "li_name":lostitem,
-      "li_place":place,
-      "user_id":1,
-      "img_id":imgId
-    }
-
-    fetch('http://127.0.0.1:5000/lost-items',{
-      method: 'post',
-      headers: {
-        'Content-Type': 'application/json', // JSON形式のデータのヘッダー
-      },
-      body: JSON.stringify(data)
-
-    })
-    .then(response => {
-      return response.json()
-    })
-    .then(data => {
-      console.log(data);
-    })
   };
 
   const handleImageChange = (event) => {
     setImage(event.target.files[0]); // 選択された画像をステートに保存
-
-    const fileInput = document.getElementById('fileInput');
-    const file = fileInput.files[0];
-
-    console.log(file);
-
-    // if (file) {
-        // // FormDataオブジェクトを作成
-        // const formData = new FormData();
-        // formData.append('image', file); // 'file' はサーバー側でファイルを受け取るためのフィールド名
-
-    //     // fetchを使ってPOSTリクエストを送信
-    //     fetch('/http://127.0.0.1:5000/images', { // サーバーのアップロードエンドポイント
-    //         method: 'POST',
-    //         headers: {
-    //           'Content-Type': 'multipart/form-data', // JSON形式のデータのヘッダー
-    //         },
-    //         body: formData
-    //     })
-    //     .then(response => response.json()) // サーバーからのレスポンスをJSONとして処理
-    //     .then(data => {
-    //         console.log('Success:', data);
-    //         setImgId(data.img_id);
-    //     })
-    //     .catch(error => {
-    //         console.error('Error:', error);
-    //     });
-    // } else {
-    //     alert('Please select a file first.');
-    // }
-
-    // FormDataオブジェクトを作成
-    // const formData = new FormData();
-    // formData.append('image', file); // 'file' はサーバー側でファイルを受け取るためのフィールド名
-
-    // fetch('http://127.0.0.1:5000/images',{
-    //   method: 'post',
-    //   headers: {
-    //     'Content-Type': 'multipart/form-data', // JSON形式のデータのヘッダー
-    //   },
-    //   body: formData
-    // })
-    // .then(response => {
-    //   return response.json()
-    // })
-    // .then(data => {
-    //   console.log(data);
-    //   setImgId(data.img_id);
-    // })
-
-    // const fileInput = document.getElementById('fileInput');
-    // const file = fileInput.files[0]; // 選択されたファイルを取得
-
-    if (file) {
-        // FormDataオブジェクトを作成
-        const formData = new FormData();
-        formData.append('image', file); // 'image' はサーバー側でファイルを受け取るためのフィールド名
-
-        // fetchを使ってPOSTリクエストを送信
-        fetch('http://127.0.0.1:5000/images', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => response.json()) // サーバーからのレスポンスをJSONとして処理
-        .then(data => {
-            console.log('Success:', data);
-            setImgId(data.img_id);
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
-    } else {
-        alert('Please select a PNG file first.');
-    }
   };
 
   return (
@@ -145,7 +48,7 @@ function MessageBoard({ messages, addMessage }) {
 
       <br></br>
         <p class="text">画像を投稿</p>
-        <input type="file" onChange={handleImageChange} accept="image/*" name="image" id="fileInput" />
+        <input type="file" onChange={handleImageChange} accept="image/*" />
         <br></br>
         <br></br>
         <button type="submit">投稿</button>

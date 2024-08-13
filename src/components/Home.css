@@ -1,16 +1,104 @@
 /* Home.css */
+
 .home {
-    padding: 20px;
-    text-align: center;
-  }
-  
-  .home h1 {
-    font-size: 2.5em;
-    margin-bottom: 20px;
-  }
-  
-  .home p {
-    font-size: 1.2em;
-    color: #666;
-  }
-  
+  display: flex;
+  height: 100vh;
+  padding: 20px;
+}
+
+.left-panel {
+  width: 30%;
+  padding: 20px;
+  background-color: #f0f0f0;
+  border-right: 1px solid #ccc;
+}
+
+.left-panel h2 {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+}
+
+.classification-result {
+  display: flex;
+  justify-content: center; /* メダルを中央に配置 */
+  align-items: center;
+  height: 200px; /* メダルの高さ */
+}
+
+.medal {
+  width: 150px; /* メダルの幅 */
+  height: 150px; /* メダルの高さ */
+  background-color: gold; /* メダルの背景色 */
+  border-radius: 50%; /* 円形にするためにborder-radiusを50%に設定 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* メダルに影を付ける */
+  font-size: 1.5em; /* テキストサイズ */
+  color: white; /* テキストカラー */
+  text-align: center;
+  font-weight: bold;
+}
+
+.right-panel {
+  width: 70%;
+  padding: 20px;
+}
+
+.message-list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.message-item {
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 800px;
+  min-height: 300px;
+  margin: 0 auto;
+}
+
+.message-content {
+  text-align: left;
+  width: 100%;
+  overflow: hidden;
+  font-size: 1.5em;
+}
+
+.message-content p {
+  margin: 0;
+  font-size: 1.5em;
+  color: #333;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.uploaded-image {
+  width: 100%;
+  max-height: 500px;
+  object-fit: cover;
+  margin-top: 15px;
+  border-radius: 10px;
+}
+
+button {
+  margin-top: 15px;
+  padding: 15px 30px;
+  font-size: 1.5em;
+  color: white;
+  background-color: #007bff;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
