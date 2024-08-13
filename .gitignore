@@ -1,5 +1,7 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
+# Frontend
+
 # dependencies
 /node_modules
 /.pnp
@@ -23,3 +25,39 @@ yarn-debug.log*
 yarn-error.log*
 
 .vscode
+
+# Backend
+
+# venv
+.venv/
+
+# python cache
+*.pyc
+__pycache__/
+
+# ??
+instance/
+
+# test
+.pytest_cache/
+.coverage
+htmlcov/
+
+# build
+dist/
+build/
+*.egg-info/
+
+# dev
+*.swo
+*.swp
+.DS_Store
+set_env_vars.sh
+
+# pyenv
+.python-version
+
+# media
+local/
+
+FindItNow.sqlite3

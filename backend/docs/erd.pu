@@ -1,0 +1,24 @@
+@startuml FindItNow
+entity users {
+  + user_id [PK]
+  --
+  user_name
+  user_email
+  user_password
+}
+entity lost_items {
+  + li_id [PK]
+  --
+  li_name
+  li_place
+  # img_id [FK]
+  # user_id [FK]
+}
+entity images {
+  + img_id [PK]
+  --
+  img_path
+}
+users ||--o{ lost_items
+images ||--|| lost_items
+@enduml
