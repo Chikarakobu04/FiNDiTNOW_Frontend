@@ -18,9 +18,9 @@ function SignUp({ setLoggedIn }) {
 
     // ユーザーデータをバックエンドに送信するための準備
     const userData = {
-      name,
-      email,
-      password
+      "user_name":name,
+      "user_email":email,
+      "user_password":password
     };
   
     fetch('http://127.0.0.1:5000/users',{
@@ -28,7 +28,7 @@ function SignUp({ setLoggedIn }) {
       headers: {
         'Content-Type': 'application/json', // JSON形式のデータのヘッダー
       },
-      body: JSON.stringify(data)
+      body: JSON.stringify(userData)
 
     })
     .then(response => {
