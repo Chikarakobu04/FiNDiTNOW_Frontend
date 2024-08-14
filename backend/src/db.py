@@ -54,24 +54,24 @@ class Image(Base):
 
     lost_item = relationship("LostItem", back_populates="image")
 
-class User(Base):
-    __tablename__ = 'users'
-    user_id = Column(Integer, primary_key=True, autoincrement=True) #ユーザーid 連番（主キー）
-    user_name = Column(String(100)) #ユーザーネーム
-    user_email = Column(String(100)) #メールアドレス
-    user_password = Column(String(100)) #パスワード
+# class User(Base):
+#     __tablename__ = 'users'
+#     user_id = Column(Integer, primary_key=True, autoincrement=True) #ユーザーid 連番（主キー）
+#     user_name = Column(String(100)) #ユーザーネーム
+#     user_email = Column(String(100)) #メールアドレス
+#     user_password = Column(String(100)) #パスワード
 
-    lost_items = relationship("LostItem", back_populates="user")
+#     lost_items = relationship("LostItem", back_populates="user")
 
 class LostItem(Base):
     __tablename__ = 'lost_items'
     li_id = Column(Integer, primary_key=True, autoincrement=True) #落とし物id 連番（主キー）
     li_name = Column(String(100)) #落とし物の名前
     li_place = Column(String(200)) #落とし物がある場所
-    user_id = Column(Integer, ForeignKey('users.user_id')) #ユーザーid（外部キー）
+    # user_id = Column(Integer, ForeignKey('users.user_id')) #ユーザーid（外部キー）
     img_id = Column(Integer, ForeignKey('images.img_id')) #画像id（外部キー）
 
-    user = relationship("User", back_populates="lost_items")
+    # user = relationship("User", back_populates="lost_items")
     image = relationship("Image", back_populates="lost_item")
 
 
@@ -82,10 +82,10 @@ class ImageSchema(ma.SQLAlchemyAutoSchema):
         model = Image
 image_schema = ImageSchema(many=True)
 
-class UserSchema(ma.SQLAlchemyAutoSchema):
-    class Meta:
-        model = User
-user_schema = UserSchema(many=True)
+# class UserSchema(ma.SQLAlchemyAutoSchema):
+#     class Meta:
+#         model = User
+# user_schema = UserSchema(many=True)
 
 class LostItemSchema(ma.SQLAlchemyAutoSchema):
     class Meta:
@@ -220,34 +220,34 @@ def postImage():
     return jsonify({"img_id":str(latestdata.img_id)})
 
 #GET(1件参照)
-@app.route('/users/<int:user_id>', methods=["GET"])
-def getUser(user_id):
+# @app.route('/users/<int:user_id>', methods=["GET"])
+# def getUser(user_id):
     
-    data = session.query(User).filter_by(user_id=user_id).first() 
-    return jsonify({"user_id":str(data.user_id), "user_name":str(data.user_name), "user_email":str(data.user_email), "user_password":str(data.user_password)})
+#     data = session.query(User).filter_by(user_id=user_id).first() 
+#     return jsonify({"user_id":str(data.user_id), "user_name":str(data.user_name), "user_email":str(data.user_email), "user_password":str(data.user_password)})
 
 #POST(登録)
-@app.route('/users', methods=["POST"])
-def postUser():
-    entry = User()
+# @app.route('/users', methods=["POST"])
+# def postUser():
+#     entry = User()
 
-    # jsonリクエストから値取得
-    json = request.get_json()
-    if type(json) == list:
-        data = json[0]
-    else:
-        data = json
+#     # jsonリクエストから値取得
+#     json = request.get_json()
+#     if type(json) == list:
+#         data = json[0]
+#     else:
+#         data = json
 
-    entry.user_name = data["user_name"]
-    entry.user_email = data["user_email"]
-    entry.user_password = data["user_password"]
-    session.add(entry)
-    session.commit()
-    session.close()
+#     entry.user_name = data["user_name"]
+#     entry.user_email = data["user_email"]
+#     entry.user_password = data["user_password"]
+#     session.add(entry)
+#     session.commit()
+#     session.close()
 
-    latestdata = session.query(User).order_by(desc(User.user_id)).first()
-    # latestdata= User.query.order_by(desc(User.user_id)).first()   
-    return redirect('/users/' + str(latestdata.user_id))
+#     latestdata = session.query(User).order_by(desc(User.user_id)).first()
+#     # latestdata= User.query.order_by(desc(User.user_id)).first()   
+#     return redirect('/users/' + str(latestdata.user_id))
 
 #GET(1件参照)
 @app.route('/lost-items/<int:li_id>', methods=["GET"])
@@ -256,7 +256,8 @@ def getLostItem(li_id):
     data = session.query(LostItem).filter_by(li_id=li_id).one()
 
     # jsonify(lost_item_schema.dump(data))だと外部キーが含まれない。lost_itemのスキーマでダンプしないように以下のような記述をする
-    return jsonify({"li_id":str(data.li_id), "li_name":str(data.li_name), "li_place":str(data.li_place), "user_id":str(data.user_id), "img_id":str(data.img_id)})
+    return jsonify({"li_id":str(data.li_id), "li_name":str(data.li_name), "li_place":str(data.li_place), "img_id":str(data.img_id)})
+    # return jsonify({"li_id":str(data.li_id), "li_name":str(data.li_name), "li_place":str(data.li_place), "user_id":str(data.user_id), "img_id":str(data.img_id)})
 
 #GET(全件参照)
 @app.route('/lost-items', methods=["GET"])
@@ -286,7 +287,7 @@ def postLostItem():
 
     entry.li_name = data["li_name"]
     entry.li_place = data["li_place"]
-    entry.user_id = data["user_id"]
+    # entry.user_id = data["user_id"]
     entry.img_id = data["img_id"]
     session.add(entry)
     session.commit()
