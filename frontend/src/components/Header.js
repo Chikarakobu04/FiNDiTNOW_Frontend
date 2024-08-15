@@ -15,7 +15,7 @@ function Header({ onNavClick }) {
           <FontAwesomeIcon icon={faSearch} size="2x" />
           <span>探す</span>
         </button>
-        <button onClick={() => onNavClick('messageBoard')}>
+        <button onClick={() => onNavClick('post')}>
           <FontAwesomeIcon icon={faPaperPlane} size="2x" />
           <span>投稿</span>
         </button>

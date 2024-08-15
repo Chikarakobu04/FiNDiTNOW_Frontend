@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Home from './components/Home';
-import MessageBoard from './components/MessageBoard';
+import Post from './components/Post';
 import PostList from './components/PostList';
 import Header from './components/Header';
 import Login from './components/login';
@@ -46,8 +46,8 @@ function App() {
         <SignUp setLoggedIn={handleLoginSuccess} />
       )}
       {loggedIn && currentScreen === 'home' && <Home messages={["Hello"]} />}
-      {loggedIn && currentScreen === 'messageBoard' && (
-        <MessageBoard messages={messages} addMessage={addMessage} />
+      {loggedIn && currentScreen === 'post' && (
+        <Post messages={messages} addMessage={addMessage} />
       )}
       {loggedIn && currentScreen === 'postList' && (
         <PostList messages={messages} />
