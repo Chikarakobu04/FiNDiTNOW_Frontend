@@ -6,24 +6,61 @@ function Post({ messages, addMessage }) {
   const [lostitem, setLostitem] = useState('');
   //const [newMessage,setNewMessage] = useState('');
   const [image, setImage] = useState(null); // 画像の状態を管理するステート
+  const [imgId, setImgId] = useState('');
 
   const handleSubmit = (event) => {
-    event.preventDefault();
-    if (lostitem.trim() !== '' || image) {
-      const messageObject = {
-        place: place,
-        text: lostitem,
-        image: URL.createObjectURL(image) // 画像を表示するためにBlob URLを作成
-      };
-      addMessage(messageObject);
-      setPlace('');
-      setLostitem('');
-      setImage(null); // 送信後に画像フィールドをリセット
+    event.preventDefault(); // jsonデータを送信したいのでformタグのデフォルト動作をキャンセルする
+
+    const data = {
+      "li_name":lostitem,
+      "li_place":place,
+      "user_id":1,
+      "img_id":imgId
     }
+
+    fetch('https://89f809aa-8d02-4435-a8d7-31e1374aa309.mock.pstmn.io/lost-items',{
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json', // JSON形式のデータのヘッダー
+      },
+      body: JSON.stringify(data)
+
+    })
+    .then(response => {
+      return response.json()
+    })
+    .then(data => {
+      console.log(data);
+    })
   };
 
   const handleImageChange = (event) => {
     setImage(event.target.files[0]); // 選択された画像をステートに保存
+  
+    const fileInput = document.getElementById('fileInput');
+    const file = fileInput.files[0];
+
+    if (file) {
+      // FormDataオブジェクトを作成
+      const formData = new FormData();
+      formData.append('image', file); // 'image' はサーバー側でファイルを受け取るためのフィールド名
+
+      // fetchを使ってPOSTリクエストを送信
+      fetch('https://89f809aa-8d02-4435-a8d7-31e1374aa309.mock.pstmn.io/images', {
+          method: 'POST',
+          body: formData
+      })
+      .then(response => response.json()) // サーバーからのレスポンスをJSONとして処理
+      .then(imgData => {
+          console.log('Success:', imgData);
+          setImgId(imgData.img_id);
+      })
+      .catch(error => {
+          console.error('Error:', error);
+      });
+    } else {
+        alert('Please select a PNG file first.');
+    }
   };
 
   return (
@@ -33,7 +70,7 @@ function Post({ messages, addMessage }) {
         <form onSubmit={handleSubmit}>
 
           <p class="text">画像を投稿</p>
-          <input type="file" onChange={handleImageChange} accept="image/*" />
+          <input type="file" onChange={handleImageChange} accept="image/*" name="image" id="fileInput" />
           <br></br>
 
           <p class="text">拾った場所</p>
