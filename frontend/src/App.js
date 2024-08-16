@@ -45,7 +45,7 @@ function App() {
       {currentScreen === 'signup' && (
         <SignUp setLoggedIn={handleLoginSuccess} />
       )}
-      {loggedIn && currentScreen === 'home' && <Home messages={["Hello"]} />}
+      {loggedIn && currentScreen === 'home' && <Home messages={[messages]} />}
       {loggedIn && currentScreen === 'post' && (
         <Post messages={messages} addMessage={addMessage} />
       )}
