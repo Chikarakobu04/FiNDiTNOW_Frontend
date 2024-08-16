@@ -24,59 +24,28 @@ function Home({ messages }) {
     fetch('https://89f809aa-8d02-4435-a8d7-31e1374aa309.mock.pstmn.io/lost-items')
     .then(response => response.json())
     .then(liList => {
-      setLostItems(liList); // ここの処理いらないかも
-
-      console.log(liList)
-      // // 各lostItemに対して、画像URLを取得
-      // liList.forEach((liData, index) => {
-      //   console.log(liData.img_id);
-      //   if (liData.img_id) {
-      //     fetch(`https://89f809aa-8d02-4435-a8d7-31e1374aa309.mock.pstmn.io/images/${liData.img_id}`)
-      //     .then(response => response.json())
-      //     .then(imgData => {
-      //       setLostItems(prevItems => {
-      //         const updatedItems = [...prevItems];
-      //         console.log(imgData.img_url);
-      //         updatedItems[index] = { ...updatedItems[index], img_url: imgData.img_url };
-      //         return updatedItems;
-      //       });
-      //     })
-      //     .catch(error => console.error('画像の取得に失敗しました:', error));
-      //   }
-      // });
+      setLostItems(liList);
     })
     .catch(error => console.error('通信に失敗しました:', error));
   }, []);
 
   return (
     <div className="home">
-      {/* <div className="left-panel">
-        <h2>メダル</h2>
-        {classificationResult ? (
-          <div className="classification-result">
-            <div className="medal">
-              <p>{classificationResult}</p> {/* メダル内に表示 */}
-            {/* </div>
-          </div>
-        ) : (
-          <p>ここに画像識別結果が表示されます</p>
-        )}
-      </div> */}
-
-      {/* <div className="right-panel"> */}
-      <div className="message-list">
+      <div className="li-list">
         {lostItems.length === 0 ? (
           <p>No messages yet. Start posting on the MessageBoard!</p>
         ) : (
-          <ul>
+          <div>
             {lostItems.map((lostItem, index) => (
-              <li key={index}>
-                <img src={lostItem.img_url} alt="落とし物の画像" className="uploaded-image" />
-                <p><strong>場所:</strong> {lostItem.li_place}</p>
-                <p><strong>モノ:</strong> {lostItem.li_name}</p>
-              </li>
+              <div className="li-container">
+                <img src={lostItem.img_url} alt="落とし物の画像" className="li-img" />
+                <div className="text-container">
+                  <p className='li-place'><strong>場所:</strong> {lostItem.li_place}</p>
+                  <p className='li-name'><strong>モノ:</strong> {lostItem.li_name}</p>
+                </div>
+              </div>
             ))}
-          </ul>
+          </div>
         )}
       </div>
     </div>
