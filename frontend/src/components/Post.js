@@ -9,18 +9,29 @@ function Post({ messages, addMessage }) {
   const [imgId, setImgId] = useState('');
 
   const handleSubmit = (event) => {
-    event.preventDefault();
-    if (lostitem.trim() !== '' || image) {
-      const messageObject = {
-        place: place,
-        text: lostitem,
-        image: URL.createObjectURL(image) // 画像を表示するためにBlob URLを作成
-      };
-      addMessage(messageObject);
-      setPlace('');
-      setLostitem('');
-      setImage(null); // 送信後に画像フィールドをリセット
+    event.preventDefault(); // jsonデータを送信したいのでformタグのデフォルト動作をキャンセルする
+
+    const data = {
+      "li_name":lostitem,
+      "li_place":place,
+      "user_id":1,
+      "img_id":imgId
     }
+
+    fetch('https://89f809aa-8d02-4435-a8d7-31e1374aa309.mock.pstmn.io/lost-items',{
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json', // JSON形式のデータのヘッダー
+      },
+      body: JSON.stringify(data)
+
+    })
+    .then(response => {
+      return response.json()
+    })
+    .then(data => {
+      console.log(data);
+    })
   };
 
   const handleImageChange = (event) => {
