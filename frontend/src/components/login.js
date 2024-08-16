@@ -37,7 +37,7 @@ function Login({ setLoggedIn }) {
 
   return (
     <div className="login">
-      <h2>Login</h2>
+      {/* <h2>Login</h2>
       <form onSubmit={handleSubmit}>
         <label htmlFor="email">Email</label>
         <input
@@ -62,9 +62,10 @@ function Login({ setLoggedIn }) {
       {error && <p className="error">{error}</p>}
 
       {/* Forgot password link */}
-      <div className="forgot-password">
+      {/* <div className="forgot-password">
         <a href="#forgot-password">Forgot password?</a>
-      </div>
+      </div>  */}
+      <p>ログイン機能は、まだ実装できていません。</p>
     </div>
   );
 }

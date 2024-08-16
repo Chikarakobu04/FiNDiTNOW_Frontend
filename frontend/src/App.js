@@ -10,7 +10,7 @@ import TitleScreen from './components/TitleScreen';
 import './App.css';
 
 function App() {
-  const [currentScreen, setCurrentScreen] = useState('title');
+  const [currentScreen, setCurrentScreen] = useState('home');
   const [loggedIn, setLoggedIn] = useState(false);
   const [messages, setMessages] = useState([]); // メッセージのステート
 
@@ -32,29 +32,26 @@ function App() {
 
   return (
     <div className="App">
-      {loggedIn && <Header onNavClick={handleNavClick} />}
+      <Header onNavClick={handleNavClick} />
 
-      {currentScreen === 'title' && (
+      {/* {currentScreen === 'title' && (
         <TitleScreen
           onLoginClick={() => setCurrentScreen('login')}
           onSignUpClick={() => setCurrentScreen('signup')}
         />
-      )}
+      )} */}
       {currentScreen === 'login' && (
         <Login setLoggedIn={handleLoginSuccess} />
       )}
-      {currentScreen === 'signup' && (
+      {/* {currentScreen === 'signup' && (
         <SignUp setLoggedIn={handleLoginSuccess} />
-      )}
-      {loggedIn && currentScreen === 'home' && <Home messages={[messages]} />}
-      {loggedIn && currentScreen === 'search' && (
+      )} */}
+      {currentScreen === 'home' && <Home />}
+      {currentScreen === 'search' && (
         <Search/>
       )}
-      {loggedIn && currentScreen === 'post' && (
-        <Post messages={messages} addMessage={addMessage} />
-      )}
-      {loggedIn && currentScreen === 'postList' && (
-        <PostList messages={messages} />
+      {currentScreen === 'post' && (
+        <Post/>
       )}
     </div>
   );
