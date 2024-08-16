@@ -11,7 +11,7 @@ function Header({ onNavClick }) {
           <FontAwesomeIcon icon={faHome} size="2x" />
           <span>ホーム</span>
         </button>
-        <button onClick={() => onNavClick('')}>
+        <button onClick={() => onNavClick('search')}>
           <FontAwesomeIcon icon={faSearch} size="2x" />
           <span>探す</span>
         </button>
