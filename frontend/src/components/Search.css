@@ -1,0 +1,104 @@
+/* 検索画面の全体 */
+.search-screen {
+    position: relative;
+    display: flex;
+    justify-content: center; /* 水平方向で中央に配置 */
+    align-items: flex-start; /* 垂直方向で上部に配置 */
+    padding-top: 20px; /* 上部に余白を追加 */
+  }
+  
+  /* 背景を暗くするオーバーレイ */
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+  }
+  
+  /* 検索ボックスの基本スタイル */
+  .search-box {
+    width: 200px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: width 0.3s ease, height 0.3s ease;
+    z-index: 2;
+    position: relative;
+    background-color: white;
+    text-align: center;
+  }
+  
+  /* 検索ボックスが拡大したときのスタイル */
+  .search-box.expanded {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    padding: 20px 30px; /* 左右に十分なパディングを追加 */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* 拡大されたときのコンテンツ */
+  .expanded-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .expanded-content input {
+    width: calc(100% - 20px); /* 入力ボックスの左右に余裕を持たせる */
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  /* 検索ボタンのスタイル */
+  .expanded-content button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #007BFF;
+    color: white;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .expanded-content button:hover {
+    background-color: #0056b3;
+  }
+
+  .li-list{
+  display: flex;
+  justify-content: center; /* 水平方向に中央揃え */
+  margin: 5vh;
+}
+
+.li-container{
+  display: flex;
+  align-items: center;
+
+  border: 1px solid #ddd; /* 明るいグレーの細いボーダー */
+  border-radius: 4px; /* 角を少し丸く */
+  padding: 16px; /* 内側の余白を追加 */
+  background-color: #fafafa; /* 柔らかい背景色 */
+}
+
+.text-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.li-img {
+  width: 200px; /* 画像の幅を指定 */
+  height: auto; /* アスペクト比を維持 */
+  margin-right: 20px; /* 画像とテキストの間のスペース */
+}
+  
